@@ -1,0 +1,67 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .word-tile {
+    background-color: #2d2d2d;
+    border-color: #3d3d3d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .word-tile.selected {
+    background-color: #5A594E;
+    border-color: #7a7968;
+    color: white;
+}
+
+body.dark-mode .shuffle-button, 
+body.dark-mode .deselect-button,
+body.dark-mode .submit-button {
+    background-color: #333333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .shuffle-button:hover, 
+body.dark-mode .deselect-button:hover,
+body.dark-mode .submit-button:hover {
+    background-color: #444444;
+}
+
+body.dark-mode .deselect-button:disabled,
+body.dark-mode .submit-button:disabled {
+    background-color: #222222;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+body.dark-mode .modal-content {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .dark-mode-toggle i {
+    color: #f0c420;
+}
+
+body.dark-mode .start-button {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+
+body.dark-mode .start-button:hover {
+    background-color: #2563eb;
+}
+
+body.dark-mode .message.error {
+    color: #dc2626;
+}
+
+body.dark-mode .message.success {
+    color: #09b144;
+}
+
+body.dark-mode .help-button svg path {
+    fill: #e0e0e0;
+}

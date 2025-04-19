@@ -1,0 +1,444 @@
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.game-container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.game-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.game-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.dark-mode-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.lives-counter {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.lives-counter i {
+    margin: 0 0.25rem;
+    color: #dc2626;
+}
+
+.lives-counter i.empty {
+    color: #444444;
+}
+
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px; /* Increased gap between cells */
+    margin-bottom: 1.2rem;
+}
+
+.word-tile {
+    text-align: center;
+    border: 2px solid #333;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background-color: #f5f5f7;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-tile.selected {
+    background-color: #333;
+    border: 2px solid #000000;
+    color: white;
+    transform: scale(1.02);
+}
+
+.button-group {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.game-button {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 550;
+    transition: all 0.2s;
+    flex: 1;
+    text-align: center;
+}
+
+.submit-button, 
+.shuffle-button, 
+.deselect-button {
+    background-color: #333;
+    border: 1px solid #333;
+    color: #ffffff;
+}
+
+.submit-button:hover, 
+.shuffle-button:hover, 
+.deselect-button:hover {
+    background-color: #292929;
+    border: 1px solid #292929;
+    transform: translateY(-2px);
+}
+
+.submit-button:disabled, 
+.deselect-button:disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.message {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.message.error {
+    color: #dc2626;
+}
+
+.message.success {
+    color: #16a34a;
+}
+
+.group-item {
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+
+.group-pattern {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+}
+
+.group-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-weight: 700;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    backdrop-filter: blur(1px); /* Размытие фона */
+    height: 100vh; /* Высота на весь экран */
+    margin: 0; /* Убирает отступы */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;
+    height: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* How to play */
+h2 {
+    margin-bottom: 0px;
+}
+
+.instructions-list {
+    font-size: 1rem;
+    font-weight: 550;
+    list-style-type: disc;  /* Буллеты-диски (●) */
+    padding-left: 20px;     /* Отступ слева (pl-5) */
+    margin-top: 20;
+    margin-bottom: 20;
+}
+
+.instructions-list li {
+    margin-bottom: 8px; /* Расстояние между элементами списка (space-y-2) */
+}
+
+.start-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #303030;
+    color: white;
+    border: 1px solid #303030;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.start-button:hover {
+    background-color: #141414;
+}
+
+.remaining-groups {
+    margin-top: 1.5rem;
+}
+
+.group-item.yellow {
+    background-color: #F9DF6D;
+    color: #000000;
+}
+
+.group-item.green {
+    background-color: #A0C35A;
+    color: #000000;
+}
+
+.group-item.blue {
+    background-color: #B0C4EF;
+    color: #000000;
+}
+
+.group-item.purple {
+    background-color: #BA81C5;
+    color: #000000;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* Loading Screen */
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--background-color);
+    z-index: 1000;
+    padding: 20px;
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: var(--text-color);
+}
+
+.loading-bar-container {
+    width: 80%;
+    max-width: 400px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.loading-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4b9e5f 0%, #59b86a 50%, #4b9e5f 100%);
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+    background-size: 200% 100%;
+    animation: loading-animation 2s linear infinite;
+}
+
+@keyframes loading-animation {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.loading-status {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    min-height: 30px;
+}
+
+.success-text {
+    color: #4b9e5f;
+    font-weight: bold;
+}
+
+.error-text {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Add these styles for the data source info */
+
+.data-source-info {
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.data-source-info p {
+    margin: 0;
+    padding: 0;
+}
+
+.reset-cors-button {
+    background-color: #4b9e5f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.reset-cors-button:hover {
+    background-color: #3d8a4e;
+}
+
+.help-button {
+    position: absolute;
+    top: 0;
+    right: 40px; /* Position to the left of dark mode toggle */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-button svg {
+    width: 28px;
+    height: 28px;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(1px);
+    height: 100vh;
+    margin: 0;
+}
+
+/* Update existing popup class to work with overlay */
+.popup {
+    position: relative; /* Change from fixed to relative */
+    transform: none; /* Remove transform */
+    top: auto;
+    left: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 280px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+.popup-title {
+    color: #ff9800;
+    margin-bottom: 10px;
+}
+
+.popup-message {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.popup-button {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.popup-close {
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.popup-success .popup-title {
+    color: #4caf50;
+}
+
+.popup-success .popup-button {
+    background: #4caf50;
+}
+
