@@ -8,4 +8,4 @@
 ## Russian-localized version of **Connections**
 
 [Connections](https://www.nytimes.com/games/connections) is a daily word puzzle game from *The New York Times*, where players group words based on hidden common themes.  
-I translated the game into Russian to make it more accessible for Russian-speaking players.
+I translated the game into Russian to make it more accessible to a wider audience. 
